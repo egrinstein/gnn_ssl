@@ -1,0 +1,45 @@
+defaults:
+  # - model/neural_srp@evaluation.models.NeuralSRP # Proposed model v1
+  - model/neural_srp@evaluation.models.NeuralSRP+ # Proposed model v2
+  # - model/di_nn@evaluation.models.CRNN4 # Baseline 1
+  # - model/di_nn@evaluation.models.CRNN6 # Baseline 2
+  - model/srp_phat@evaluation.models.SRP # Baseline 3
+  
+evaluation:
+  metrics:
+    l2:
+      class: gnn_ssl.metrics.SourceDistance
+
+  models:
+    # CRNN4:
+    #   evaluate_on:
+    #     - 4 mics reverb
+    #     - 4 mics recorded
+    #   model:
+    #     n_mics: 4
+    # CRNN6:
+    #   evaluate_on:
+    #     - 6 mics reverb
+    #     - 6 mics recorded
+    #   model:
+    #     n_mics: 6
+    NeuralSRP+:
+      evaluate_on:
+        - 4 mics reverb
+        - 4 mics recorded
+        - 6 mics reverb
+        - 6 mics recorded
+    # NeuralSRP:
+    #   evaluate_on:
+    #     - 4 mics reverb
+    #     - 4 mics recorded
+    #     - 6 mics reverb
+    #     - 6 mics recorded
+    SRP:
+      evaluate_on:
+        - 4 mics reverb
+        - 4 mics recorded
+        - 6 mics reverb
+        - 6 mics recorded
+
+  batch_size: 4

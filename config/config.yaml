@@ -1,0 +1,10 @@
+defaults:
+  - dataset
+  - model/di_nn@_here_ #   - model/di_nn@_here_
+  - training
+  - evaluation
+  - features
+  - targets
+  - inputs_train
+  - inputs_eval
+class: gnn_ssl.trainers.neural_srp.NeuralSrpTrainer # gnn_ssl.trainers.di_nn.DINNTrainer

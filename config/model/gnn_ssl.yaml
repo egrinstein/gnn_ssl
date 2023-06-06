@@ -1,0 +1,12 @@
+n_pairwise_features: 625 #625 # Same as output grid
+pairwise_feature_extractor: null # gcc_phat | spatial_likelihood_grid | null
+pairwise_network_only: False # Only used for rssl when training on two steps. The first step will only train the pairwise network
+local_feature_extractor: slf # slf | dft_phase | mlp | null
+n_layers: 3
+
+dropout_rate: 0.0
+batch_norm: false
+
+activation: relu # relu | prelu
+output_activation: null # null | sigmoid | relu
+init_layers: false

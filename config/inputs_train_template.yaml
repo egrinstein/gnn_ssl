@@ -1,0 +1,14 @@
+# Copy this file, rename it to inputs_train.yaml and substitute your paths for your local dataset directories
+
+inputs_train:
+  dataset_paths:
+    training: [
+        /Users/ezajlerg/datasets/neural_srp_2/train
+      ]
+    validation: [
+      /Users/ezajlerg/datasets/neural_srp_2/validation
+    ]
+    test: [
+      #/Users/ezajlerg/datasets/neural_srp_2/test
+      /Users/ezajlerg/datasets/neural_srp_2/test_libri
+    ]

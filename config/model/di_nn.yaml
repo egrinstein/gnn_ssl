@@ -1,0 +1,46 @@
+defaults:
+  - ../features@model
+  - ../targets@model
+
+model:
+  # Conv config
+  kernel_size: [2, 2]
+  pool_type: max # avg | max
+  pool_size: [1, 2]
+  batch_norm: true
+  conv_layers_config:
+    - layer_1:
+      type: double # single: one layer | double: two layers
+      n_channels: 64
+    - layer_2:
+      type: double
+      n_channels: 64
+    - layer_3:
+      type: double
+      n_channels: 64
+    - layer_4:
+      type: double
+      n_channels: 64
+  flatten_dims: false
+
+  # Rnn config
+  rnn_config:
+    bidirectional: false
+    output_mode: last_time # last_time | avg_time | avg_channels
+    n_layers: 2
+    n_output_channels: 64
+  # Decoder (MLP) config
+
+  encoder_mlp_config:
+    n_layers: 3
+    n_hidden_channels: 625
+    n_output_channels: 625
+    dropout_rate: 0.2
+
+  activation: relu # relu | prelu
+  output_activation: null # null | sigmoid | relu
+  init_layers: false
+  class: gnn_ssl.models.di_nn.DINN
+
+  is_metadata_aware: true
+  n_mics: 6

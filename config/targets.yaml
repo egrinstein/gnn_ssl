@@ -1,0 +1,15 @@
+targets:
+  loss: l1 # l1 | l2
+  weighted_loss: false
+  # TODO: Add regularization
+
+  type: grid # grid | source_coordinates
+  n_output_coordinates: 2 # For the source_coordinates option. 2 for 2D, 3 for 3D
+  hyperbolic_likelihood_weight: 1
+  gaussian_likelihood_weight: 0
+  n_points_per_axis: 25
+  sigma: .5
+  normalize: true
+  squared: false
+
+  loss_class: gnn_ssl.metrics.Loss

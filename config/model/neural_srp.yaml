@@ -1,0 +1,5 @@
+defaults:
+  - pairwise_neural_srp
+
+model:
+  class: gnn_ssl.models.neural_srp.NeuralSrp

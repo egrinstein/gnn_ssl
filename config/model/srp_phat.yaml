@@ -1,0 +1,6 @@
+defaults:
+  - ../targets@model
+  - ../features@model
+
+model:
+  class: gnn_ssl.models.baselines.srp_phat.SrpPhat

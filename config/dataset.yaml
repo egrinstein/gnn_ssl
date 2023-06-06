@@ -1,0 +1,9 @@
+dataset:
+  sr: 16000
+  n_input_seconds: 0.5 # Input duration is seconds for the networks. AKA frame size.
+
+  # Metadata config
+  metadata_dim: 3
+  use_rt60_as_metadata: false
+
+  class: gnn_ssl.datasets.distributed_ssl.DistributedSslDataLoader

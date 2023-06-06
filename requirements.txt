@@ -1,0 +1,6 @@
+pytorch-lightning
+torchaudio
+hydra-core
+pandas
+scipy
+matplotlib
