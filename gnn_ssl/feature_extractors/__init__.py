@@ -64,4 +64,4 @@ def get_stft_output_shape(feature_config):
     out_width = math.ceil((n_input_samples)/feature_config["hop_size"])
     out_height = feature_config["n_dft"]//2 # /2 as we use "onesided" dft
     
-    return torch.Tensor((out_width, out_height))
+    return torch.Tensor((out_width, out_height)).int()

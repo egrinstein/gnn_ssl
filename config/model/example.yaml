@@ -1,0 +1,17 @@
+# A simple MLP model
+
+defaults:
+  - ../features@model
+  - ../targets@model
+
+model:
+  class: gnn_ssl.models.example.ExampleNet
+
+  n_output_features: 5
+  n_hidden_features: 128
+  n_layers: 3
+  activation: relu
+  output_activation: sigmoid
+
+  batch_norm: false
+  dropout_rate: 0.0

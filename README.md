@@ -32,7 +32,10 @@ will create a dataset containing 100 examples. For more information on customizi
 
 2. Create a `inputs_train.yaml` file
 
-Copy the file `inputs_train_template.yaml` file under `gnn_ssl/config` to point to the paths of your training, validation and testing datasets.
+Copy the file `inputs_train_template.yaml` as a file called `ìnputs_train.yaml` file under `gnn_ssl/config`,
+and edit the paths to refer to your training, validation and testing datasets.
+
+Do the same for the `inputs_eval.yaml` file, which is used for testing the model.
 
 3. Training the model
 

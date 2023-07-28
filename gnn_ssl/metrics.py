@@ -180,3 +180,19 @@ class SslMetrics(ssl_metrics.SslMetrics):
         room_dims = targets["room_dims"]
         targets = targets["source_coordinates"][:, :2]
         return super().forward(model_output, targets, room_dims)
+
+
+class ExampleLoss(torch.nn.Module):
+    def __init__(self, config):
+        super().__init__()
+
+        self.config = config
+
+    def forward(self, model_output, targets, mean_reduce=True):
+        x = model_output["example_output"]
+
+        # Don't do anything with targets, just return the output
+        if mean_reduce:
+            x = x.mean()
+        
+        return x

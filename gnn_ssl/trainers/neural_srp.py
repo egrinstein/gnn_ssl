@@ -2,13 +2,6 @@ from gnn_ssl.metrics import NormLoss
 from .base import BaseTrainer
 
 
-class PairwiseNeuralSrpTrainer(BaseTrainer):
-    def _step(self, batch, batch_idx, epoch_type):
-        x, y = batch[0] # 0 is because the current dataloader is multi-microphone
-        
-        return super()._step((x, y), batch_idx, epoch_type)
-
-
 class NeuralSrpTrainer(BaseTrainer):
     def __init__(self, config):
         super().__init__(config)

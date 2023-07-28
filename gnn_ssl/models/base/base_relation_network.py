@@ -99,11 +99,11 @@ class PairwiseRelationNetwork(nn.Module):
         self.pairwise_relation_network = MLP(n_input_features,
                                                 n_output_features,
                                                 n_output_features,
+                                                n_layers,
                                                 activation,
                                                 activation,
                                                 batch_norm,
-                                                dropout_rate,
-                                                n_layers)
+                                                dropout_rate)
 
         if init_layers:
             for layer in self.pairwise_relation_network.layers:
@@ -159,11 +159,11 @@ class RelationFusionNetwork(nn.Module):
         self.relation_fusion_network = MLP(n_input_features,
                                            n_output_features,
                                            n_input_features,
+                                           n_layers,
                                            activation,
                                            output_activation,
                                            batch_norm,
-                                           dropout_rate,
-                                           n_layers)
+                                           dropout_rate)
         self.signal_key = signal_key
 
         if init_layers:

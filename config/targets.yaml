@@ -1,5 +1,5 @@
 targets:
-  loss: l1 # l1 | l2
+  loss: l1 # l1 | l2 | example
   weighted_loss: false
   # TODO: Add regularization
 
@@ -12,4 +12,4 @@ targets:
   normalize: true
   squared: false
 
-  loss_class: gnn_ssl.metrics.Loss
+  loss_class: gnn_ssl.metrics.ExampleLoss

@@ -32,7 +32,7 @@ class BaseTrainer(pl.LightningModule):
 
     def _step(self, batch, batch_idx, epoch_type):
 
-        x, y = batch
+        x, y = batch[0] # 0 is to ignore the microphone array index
         
         # 1. Compute model output and loss
         x = self.forward(x)

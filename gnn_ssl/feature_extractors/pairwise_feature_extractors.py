@@ -2,7 +2,7 @@ import torch
 
 from torch.nn import Module
 
-from pysoundloc.pysoundloc.correlation import gcc_phat_batch
+from pysoundloc.pysoundloc.gcc import gcc_phat_batch
 from pysoundloc.pysoundloc.srp import compute_pairwise_srp_grids
 
 
@@ -134,7 +134,7 @@ class ArrayWiseSpatialLikelihoodGrid(Module):
         super().__init__()
         self.sr = sr
         self.n_grid_points = n_grid_points
-        self.thickness=thickness
+        self.thickness = thickness
 
         self.flatten = flatten
         if flatten:
@@ -144,9 +144,11 @@ class ArrayWiseSpatialLikelihoodGrid(Module):
 
     def forward(self, x):
         x_signal = x["signal"]
-        mic_coords = x["local"]["mic_coordinates"]
-        room_dims = x["global"]["room_dims"]
-
+        mic_coords = x["metadata"]["local"]["mic_coordinates"]
+        room_dims = x["metadata"]["global"]["room_dims"]
+        if x_signal.ndim == 3:
+            # Single array
+            x_signal = x_signal.unsqueeze(1)
         batch_size, n_arrays, n_array, n_signal = x_signal.shape
 
         grids = torch.zeros((
@@ -161,7 +163,7 @@ class ArrayWiseSpatialLikelihoodGrid(Module):
                             x_signal[:, k, i], x_signal[:, k, j], self.sr,
                             mic_coords[:, k, i], mic_coords[:, k, j],
                             room_dims, n_grid_points=self.n_grid_points,
-                            thickness=self.thickness
+                            n_correlation_neighbours=self.thickness
                     )
                     grids[:, k] += grid_ij
 

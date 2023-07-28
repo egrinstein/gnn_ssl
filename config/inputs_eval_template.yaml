@@ -1,0 +1,13 @@
+# Copy this file, rename it to inputs_eval.yaml and substitute your paths for your local dataset directories
+
+inputs_eval:
+  dataset_paths:
+    dataset_name_1: 
+      /Users/ezajlerg/datasets/test1
+    dataset_name_2: 
+      /Users/ezajlerg/datasets/test2
+  checkpoint_paths:
+    neural_srp: 
+        /path/to/checkpoint1
+    gnn_ssl: 
+        /path/to/checkpoint2

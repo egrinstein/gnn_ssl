@@ -1,12 +1,21 @@
-n_pairwise_features: 625 #625 # Same as output grid
-pairwise_feature_extractor: null # gcc_phat | spatial_likelihood_grid | null
-pairwise_network_only: False # Only used for rssl when training on two steps. The first step will only train the pairwise network
-local_feature_extractor: slf # slf | dft_phase | mlp | null
-n_layers: 3
+defaults:
+  - ../features@model
+  - ../targets@model
 
-dropout_rate: 0.0
-batch_norm: false
+model:
+  n_pairwise_features: 625 #625 # Same as output grid
+  pairwise_feature_extractor: null # gcc_phat | spatial_likelihood_grid | null
+  pairwise_network_only: False # Only used for rssl when training on two steps. The first step will only train the pairwise network
+  local_feature_extractor: slf # slf | dft_phase | mlp | null
+  n_layers: 3
 
-activation: relu # relu | prelu
-output_activation: null # null | sigmoid | relu
-init_layers: false
+  dropout_rate: 0.0
+  batch_norm: false
+
+  activation: relu # relu | prelu
+  output_activation: null # null | sigmoid | relu
+  init_layers: false
+
+  is_metadata_aware: True
+  
+  class: gnn_ssl.models.gnn_ssl.GnnSslNet

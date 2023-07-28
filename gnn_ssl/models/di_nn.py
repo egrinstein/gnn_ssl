@@ -5,7 +5,7 @@ from hydra.utils import get_class
 from omegaconf import OmegaConf
 
 from gnn_ssl.feature_extractors import get_stft_output_shape
-from pysoundloc.pysoundloc.math_utils import grid_argmax
+from pysoundloc.pysoundloc.utils.math import grid_argmax
 
 from .base.rnn import RNN, init_gru
 from .base.mlp import MLP

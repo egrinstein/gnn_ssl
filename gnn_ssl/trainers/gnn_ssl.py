@@ -5,7 +5,7 @@ from torch.optim.lr_scheduler import MultiStepLR
 
 from ..models.gnn_ssl import GnnSslNet
 
-from ..metrics import Loss, CoordinateError
+from ..metrics import Loss
 from .base import BaseTrainer
 
 
@@ -16,28 +16,9 @@ class GnnSslNetTrainer(BaseTrainer):
     """
 
     def __init__(self, config):
-        config = OmegaConf.to_container(config)
-        self.config = config
+        super().__init__(config)
 
-        model = GnnSslNet(**config["model"],
-                          target_config=config["targets"])
-   
-        loss = Loss(config["targets"], dim=None)
-        super().__init__(model, loss)
-
-        if config["targets"]["type"] == "grid":
-            self.coordinate_error = CoordinateError(config["targets"]["n_points_per_axis"])
         self.rmse = Loss(config["targets"], mode="l2", dim=1)
-
-    def configure_optimizers(self):
-        lr = self.config["training"]["learning_rate"]
-        decay_step = self.config["training"]["learning_rate_decay_steps"]
-        decay_value = self.config["training"]["learning_rate_decay_values"]
-
-        optimizer = torch.optim.AdamW(self.parameters(), lr=lr)
-        scheduler = MultiStepLR(optimizer, decay_step, decay_value)
-
-        return [optimizer], [scheduler]
 
     def _step(self, batch, batch_idx, log_model_output=False, log_labels=False):
         """This is the base step done on every training, validation and testing batch iteration.
@@ -62,12 +43,7 @@ class GnnSslNetTrainer(BaseTrainer):
             loss_vectors.append(loss)
             n_mics.append(n)
 
-            # Metrics:
-            # 2. Compute coordinate error
-            if self.config["model"]["target"]["type"] == "likelihood_grid":
-                coordinate_error = self.coordinate_error(output, y).mean()
-                self.log(f"coord_error_{n}_mics", coordinate_error, on_step=True, prog_bar=True, on_epoch=False)
-            # 3. RMSE
+            # 2. RMSE
             rmse_error = self.rmse(output, y, mean_reduce=True)
             self.log(f"rmse_{n}_mics", rmse_error, on_step=True, prog_bar=False, on_epoch=False)
 

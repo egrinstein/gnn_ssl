@@ -12,3 +12,5 @@ inputs_train:
       #/Users/ezajlerg/datasets/neural_srp_2/test
       /Users/ezajlerg/datasets/neural_srp_2/test_libri
     ]
+
+  checkpoint_path: null

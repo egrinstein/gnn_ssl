@@ -1,6 +1,6 @@
 import torch
 
-from pysoundloc.pysoundloc.math_utils import grid_argmax
+from pysoundloc.pysoundloc.utils.math import grid_argmax
 
 from .pairwise_neural_srp import PairwiseNeuralSrp
 from ..feature_extractors.metadata import filter_local_metadata
