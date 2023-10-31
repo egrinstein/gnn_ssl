@@ -1,7 +1,14 @@
 # GNN-SSL: Graph Neural Networks for Sound Source Localization
 
-This repository contains the code for the paper [Graph neural networks for sound source localization on distributed microphone networks](https://ieeexplore.ieee.org/abstract/document/10097211),
-authored by Eric Grinstein, Mike Brookes and Patrick Naylor (Imperial College London). If you find this code useful, please cite it:
+This repository contains the code for the papers 
+
+["Graph neural networks for sound source localization on distributed microphone networks"](https://ieeexplore.ieee.org/abstract/document/10097211),
+Eric Grinstein, Mike Brookes and Patrick Naylor, IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), Rhodes Island, Greece, 2023
+
+and 
+
+"The Neural-SRP method for positional sound source localization" Eric Grinstein, Toon van Waterschoot, Mike Brookes and Patrick Naylor, IEEE Asilomar Conference, California, USA, 2023
+
 
 E. Grinstein, M. Brookes and P. A. Naylor, "Graph Neural Networks for Sound Source Localization on Distributed Microphone Networks," ICASSP 2023 - 2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), Rhodes Island, Greece, 2023, pp. 1-5, doi: 10.1109/ICASSP49357.2023.10097211.
 
